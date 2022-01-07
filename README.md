@@ -7,10 +7,9 @@
 
 [![R build
 status](https://github.com/dirkschumacher/listcomp/workflows/R-CMD-check/badge.svg)](https://github.com/dirkschumacher/listcomp/actions)
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/listcomp)](https://CRAN.R-project.org/package=listcomp)
+[![R-CMD-check](https://github.com/dirkschumacher/listcomp/workflows/R-CMD-check/badge.svg)](https://github.com/dirkschumacher/listcomp/actions)
 <!-- badges: end -->
 
 The package implements [list
@@ -80,17 +79,17 @@ lst_verbose <- function(expr, ...) {
   deparse(listcomp:::translate(rlang::enquo(expr), rlang::enquos(...)))
 }
 lst_verbose(c(x, y), x = 1:10, y = x:5, x < 2)
-#>  [1] "{"                                                                    
-#>  [2] "    var_listcomp____ee3cfa1f <- list()"                               
-#>  [3] "    var_listcomp____300f3ed8 <- 1:10"                                 
-#>  [4] "    for (x in var_listcomp____300f3ed8) for (y in x:5) {"             
-#>  [5] "        if (!(x < 2)) {"                                              
-#>  [6] "            next"                                                     
-#>  [7] "        }"                                                            
-#>  [8] "        var_listcomp____ee3cfa1f[[length(var_listcomp____ee3cfa1f) + "
-#>  [9] "            1]] <- c(x, y)"                                           
-#> [10] "    }"                                                                
-#> [11] "    var_listcomp____ee3cfa1f"                                         
+#>  [1] "{"                                                                                                                    
+#>  [2] "    var_listcomp____49b14e0356b0eb75890f57cdba263f2c <- list()"                                                       
+#>  [3] "    var_listcomp____e914ec62bcf06fa4923666b0cb589de7 <- 1:10"                                                         
+#>  [4] "    for (x in var_listcomp____e914ec62bcf06fa4923666b0cb589de7) for (y in x:5) {"                                     
+#>  [5] "        if (!(x < 2)) {"                                                                                              
+#>  [6] "            next"                                                                                                     
+#>  [7] "        }"                                                                                                            
+#>  [8] "        var_listcomp____49b14e0356b0eb75890f57cdba263f2c[[length(var_listcomp____49b14e0356b0eb75890f57cdba263f2c) + "
+#>  [9] "            1]] <- c(x, y)"                                                                                           
+#> [10] "    }"                                                                                                                
+#> [11] "    var_listcomp____49b14e0356b0eb75890f57cdba263f2c"                                                                 
 #> [12] "}"
 ```
 
@@ -136,29 +135,29 @@ The code then looks like this:
 
 ``` r
 lst_verbose(c(i, j, k), list(i = 1:10, j = 1:10), k = 1:5, i < 3, k < 3)
-#>  [1] "{"                                                                              
-#>  [2] "    var_listcomp____1c3f2d37 <- list()"                                         
-#>  [3] "    var_listcomp____41f11c1f <- 1:5"                                            
-#>  [4] "    {"                                                                          
-#>  [5] "        parallel_seq <- list(i = 1:10, j = 1:10)"                               
-#>  [6] "        for (var_listcomp____e546bcdf in seq_along(parallel_seq[[1]])) {"       
-#>  [7] "            i <- parallel_seq[[\"i\"]][[var_listcomp____e546bcdf]]"             
-#>  [8] "            j <- parallel_seq[[\"j\"]][[var_listcomp____e546bcdf]]"             
-#>  [9] "            for (k in var_listcomp____41f11c1f) {"                              
-#> [10] "                if (!(i < 3)) {"                                                
-#> [11] "                  next"                                                         
-#> [12] "                }"                                                              
-#> [13] "                {"                                                              
-#> [14] "                  if (!(k < 3)) {"                                              
-#> [15] "                    next"                                                       
-#> [16] "                  }"                                                            
-#> [17] "                  var_listcomp____1c3f2d37[[length(var_listcomp____1c3f2d37) + "
-#> [18] "                    1]] <- c(i, j, k)"                                          
-#> [19] "                }"                                                              
-#> [20] "            }"                                                                  
-#> [21] "        }"                                                                      
-#> [22] "    }"                                                                          
-#> [23] "    var_listcomp____1c3f2d37"                                                   
+#>  [1] "{"                                                                                                                              
+#>  [2] "    var_listcomp____0cc901998ffca8eb9ab6e66438eabb65 <- list()"                                                                 
+#>  [3] "    var_listcomp____edc8004e1fc9172689566a16fc4a2cf6 <- 1:5"                                                                    
+#>  [4] "    {"                                                                                                                          
+#>  [5] "        parallel_seq <- list(i = 1:10, j = 1:10)"                                                                               
+#>  [6] "        for (var_listcomp____b1394f1020f630cb5b96890e815444b7 in seq_along(parallel_seq[[1]])) {"                               
+#>  [7] "            i <- parallel_seq[[\"i\"]][[var_listcomp____b1394f1020f630cb5b96890e815444b7]]"                                     
+#>  [8] "            j <- parallel_seq[[\"j\"]][[var_listcomp____b1394f1020f630cb5b96890e815444b7]]"                                     
+#>  [9] "            for (k in var_listcomp____edc8004e1fc9172689566a16fc4a2cf6) {"                                                      
+#> [10] "                if (!(i < 3)) {"                                                                                                
+#> [11] "                  next"                                                                                                         
+#> [12] "                }"                                                                                                              
+#> [13] "                {"                                                                                                              
+#> [14] "                  if (!(k < 3)) {"                                                                                              
+#> [15] "                    next"                                                                                                       
+#> [16] "                  }"                                                                                                            
+#> [17] "                  var_listcomp____0cc901998ffca8eb9ab6e66438eabb65[[length(var_listcomp____0cc901998ffca8eb9ab6e66438eabb65) + "
+#> [18] "                    1]] <- c(i, j, k)"                                                                                          
+#> [19] "                }"                                                                                                              
+#> [20] "            }"                                                                                                                  
+#> [21] "        }"                                                                                                                      
+#> [22] "    }"                                                                                                                          
+#> [23] "    var_listcomp____0cc901998ffca8eb9ab6e66438eabb65"                                                                           
 #> [24] "}"
 ```
 
@@ -174,13 +173,13 @@ bench::mark(
   d = gen_list(c(x, y), x = 1:100, x < 5, y = 1:100, y < 5, z = 1:100, z == x + y, .compile = FALSE)
 )
 #> Warning: Some expressions had a GC in every iteration; so filtering is disabled.
-#> # A tibble: 4 x 6
+#> # A tibble: 4 × 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 a           41.37ms   43.8ms     22.4    179.1KB     3.74
-#> 2 b           12.59ms   13.4ms     65.0    179.1KB    11.8 
-#> 3 c          612.15ms  612.1ms      1.63    67.6KB    11.4 
-#> 4 d            2.46ms    2.6ms    361.      67.6KB    12.0
+#> 1 a           16.66ms  17.79ms     56.8    172.1KB     39.2
+#> 2 b            4.18ms   4.34ms    218.     172.1KB     33.7
+#> 3 c          275.84ms 275.89ms      3.62    60.7KB     21.7
+#> 4 d          838.37µs 878.59µs   1085.      60.7KB     28.0
 ```
 
 How slow is it compared to a for loop and lapply for a very simple
@@ -201,18 +200,18 @@ bench::mark(
   }, 
   time_unit = "ms"
 )
-#> # A tibble: 4 x 6
+#> # A tibble: 4 × 6
 #>   expression   min median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <dbl>  <dbl>     <dbl> <bch:byt>    <dbl>
-#> 1 a          6.47   6.84       141.    89.5KB     16.8
-#> 2 b          1.34   1.43       667.    33.1KB     12.7
-#> 3 c          0.781  0.867     1128.    15.8KB     29.5
-#> 4 d          0.435  0.466     2069.        0B     24.1
+#> 1 a          2.05   2.14       467.    82.6KB     43.5
+#> 2 b          0.416  0.438     2266.    26.2KB     36.3
+#> 3 c          0.309  0.329     3013.    15.8KB     69.1
+#> 4 d          0.165  0.177     5559.        0B     51.9
 ```
 
 # Prior art
 
-  - [lc](https://github.com/mailund/lc) Uses a similiar syntax as
+-   [lc](https://github.com/mailund/lc) Uses a similiar syntax as
     `complist`
-  - [comprehenr](https://github.com/gdemin/comprehenr) Uses a similiar
+-   [comprehenr](https://github.com/gdemin/comprehenr) Uses a similiar
     code generation approach as `complist` but with a different syntax.
